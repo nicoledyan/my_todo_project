@@ -27,7 +27,6 @@ class Task(models.Model):
 @receiver(post_save, sender=Task)
 def send_task_completed_email(sender, instance, created, **kwargs):
     if instance.completed:
-        print(f"Task completed: {instance.title}")  # Log for debugging
         send_mail(
             'Task Completed',
             f'Your task "{instance.title}" has been completed.',
